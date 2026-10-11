@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap');
+
+@font-face {
+  font-family: 'Blure Regular';
+  src: url('/fonts/Blure-Regular.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+  color: #f5ead5;
+  background: #080d14;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --gold: #e3bc78;
+  --soft-gold: #c7a46b;
+  --cream: #f5ead5;
+  --muted: #c6c1bc;
+  --mono: 'DM Mono', 'Courier New', monospace;
+  --serif: 'Blure Regular', Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  background: #080d14;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.landing {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #080d14;
+}
+
+.hero-art {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: #0a1019;
+}
+
+.castle-image,
+.image-vignette {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.castle-image {
+  z-index: 0;
+  object-fit: cover;
+  object-position: center;
+  animation: image-reveal 1.4s ease-out both;
+}
+
+.image-vignette {
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(4, 10, 17, 0.06) 0%, transparent 31%, rgba(4, 9, 15, 0.12) 51%, rgba(4, 9, 15, 0.86) 100%),
+    linear-gradient(90deg, rgba(4, 8, 13, 0.1), transparent 33%, transparent 70%, rgba(4, 8, 13, 0.16));
+}
+
+.launch-message {
+  position: absolute;
+  z-index: 2;
+  right: 24px;
+  bottom: clamp(72px, 10vh, 108px);
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: rise-in 950ms 260ms both;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: #e7d4ae;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+}
+
+.status-dot {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #edc87e;
+  box-shadow: 0 0 12px rgba(237, 200, 126, 0.9);
+}
+
+.status-dot::after {
+  position: absolute;
+  inset: -4px;
+  border: 1px solid rgba(237, 200, 126, 0.56);
+  border-radius: inherit;
+  content: '';
+  animation: beacon 2s ease-out infinite;
+}
+
+.launch-message h2 {
+  max-width: 760px;
+  margin: 17px 0 0;
+  color: var(--cream);
+  font-family: var(--serif);
+  font-size: clamp(27px, 4vw, 48px);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.18;
+  text-shadow: 0 2px 18px rgba(3, 7, 11, 0.95);
+  text-wrap: balance;
+}
+
+.description {
+  max-width: 44ch;
+  margin: 9px 0 0;
+  color: #d1c9bd;
+  font-size: clamp(12px, 1.25vw, 14px);
+  line-height: 1.7;
+  text-shadow: 0 1px 10px #03070b;
+}
+
+.coming-soon {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 21px;
+  color: #ecd29f;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.coming-soon-line {
+  width: clamp(25px, 5vw, 48px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(227, 188, 120, 0.72));
+}
+
+.coming-soon-line:last-child {
+  transform: rotate(180deg);
+}
+
+.footer {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 16px;
+  color: #e7ddca;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.045em;
+  text-align: center;
+  text-shadow: 0 1px 8px #05080c;
+  animation: fade-in 1s 450ms both;
+}
+
+.footer-divider {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--soft-gold);
+}
+
+@keyframes image-reveal {
+  from { opacity: 0.5; transform: scale(1.025); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes beacon {
+  0% { opacity: 0.8; transform: scale(0.65); }
+  100% { opacity: 0; transform: scale(1.8); }
+}
+
+@media (max-width: 760px) {
+  .landing {
+    display: flex;
+    min-height: 100svh;
+    flex-direction: column;
+    overflow: visible;
+    background: #080d14;
+  }
+
+  .hero-art {
+    display: block;
+    min-height: clamp(280px, 44svh, 500px);
+    aspect-ratio: auto;
+    flex: 1 1 auto;
+    overflow: visible;
+  }
+
+  .castle-image {
+    object-fit: cover;
+    object-position: center 46%;
+  }
+
+  .image-vignette {
+    background:
+      linear-gradient(180deg, rgba(4, 10, 17, 0.1), transparent 42%, rgba(4, 9, 15, 0.5) 100%),
+      linear-gradient(90deg, rgba(4, 8, 13, 0.12), transparent 28%, transparent 72%, rgba(4, 8, 13, 0.12));
+  }
+
+  .launch-message {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    min-height: 238px;
+    justify-content: center;
+    padding: 29px 22px 35px;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(92, 66, 42, 0.19), transparent 70%),
+      linear-gradient(180deg, #0c121b 0%, #080d14 100%);
+  }
+
+  .eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.13em;
+  }
+
+  .launch-message h2 {
+    max-width: 430px;
+    margin-top: 13px;
+    font-size: clamp(27px, 7vw, 39px);
+  }
+
+  .description {
+    max-width: 345px;
+    margin-top: 8px;
+    font-size: 13px;
+  }
+
+  .coming-soon {
+    margin-top: 17px;
+    font-size: 9px;
+  }
+
+  .footer {
+    position: relative;
+    min-height: 54px;
+    margin-top: auto;
+    background: #080d14;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer {
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 9px;
+  }
+}
+
+@media (max-height: 650px) and (min-width: 761px) {
+  .launch-message {
+    bottom: 60px;
+  }
+
+  .launch-message h2 {
+    margin-top: 11px;
+    font-size: clamp(27px, 4vw, 38px);
+  }
+
+  .coming-soon {
+    margin-top: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
